@@ -8,6 +8,8 @@ import Counter from 'src/components/counter';
 import './index.css';
 
 import "tdesign-theme-generator";
+import { PageControl } from 'src/components/PageControl';
+import { PageControlContext } from 'src/components/configs/PageControlContext';
 declare  global {
   namespace JSX {
     interface IntrinsicElements {
@@ -90,40 +92,6 @@ function DemoIndex()
 
   let mediasRef = useRef<Medias>([]);
 
-  // const showActions = useCallback((actions: any[], actionMode: any[]) => {
-    
-  // }, [actions, actionMode]);
-
-
-  // let startTimeStamp = 0;
-
-  // const headerClickHandle = (e: any) => {
-  //   console.log("header click", e);
-  //   setDisplayMode(!displayMode);
-  // };
-
-  // const mouseDownHandle = (e: any) => {
-  //   startTimeStamp = e.timeStamp;
-  // }
-
-  // const mouseUpHandle = (handler: (e: any) => void) => (e: any) => {
-  //   if (e.timeStamp - startTimeStamp > 300) {
-  //     handler(e);
-  //     console.log("long press")
-  //     e.preventDefault();
-  //   }
-  // }
-
-  // const footerClickHandle = (e: any) => {
-    
-  //   const { id } = e.target;
-  //   if (id in ActionSchemes)
-  //   {
-  //     setActions( (ActionSchemes as any)[id]() );
-  //     return;
-  //   }
-  // }
-
   const onAddMedias = (medias: Medias) => {
     mediasRef.current = medias;
   }
@@ -152,6 +120,14 @@ function DemoIndex()
         onEditedMedia={onEditedMedia}
       ></MediaContainer>
       <MediaManager onAdd={onAddMedias} onRun={onRunActions} onSave={onSaveMedias}></MediaManager>
+      <PageControl>
+        <div>ABC</div>
+      </PageControl>
+
+      <PageControlContext.Provider value={{btnList: [[{name: "用户中心", icon: "icon",}]]}}>
+        
+      </PageControlContext.Provider>
+
     </>
   )
 }
