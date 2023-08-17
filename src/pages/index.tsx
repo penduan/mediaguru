@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { StrictMode, useCallback, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { start } from 'repl';
 import { MediaContainer } from 'src/components/MediaContainer';
@@ -8,7 +8,7 @@ import Counter from 'src/components/counter';
 import './index.css';
 
 import "tdesign-theme-generator";
-import { PageControl } from 'src/components/PageControl';
+import { PageControl, PageControlProvider } from 'src/components/PageControl';
 import { PageControlContext } from 'src/components/configs/PageControlContext';
 declare  global {
   namespace JSX {
@@ -120,13 +120,9 @@ function DemoIndex()
         onEditedMedia={onEditedMedia}
       ></MediaContainer>
       <MediaManager onAdd={onAddMedias} onRun={onRunActions} onSave={onSaveMedias}></MediaManager>
-      <PageControl>
-        <div>ABC</div>
-      </PageControl>
-
-      <PageControlContext.Provider value={{btnList: [[{name: "用户中心", icon: "icon",}]]}}>
-        
-      </PageControlContext.Provider>
+      <PageControlProvider context={{btnLists: [[{name: "用户中心", icon: "icon",}]]}}>
+        <PageControl header="abc" footer="footer" />  
+      </PageControlProvider>
 
     </>
   )
@@ -137,7 +133,11 @@ export default function createApp() {
   container.id = 'app'
   document.body.appendChild(container)
 
-  ReactDOM.render(<DemoIndex />, container)
+  ReactDOM.render(
+    <StrictMode>
+      <DemoIndex />
+    </StrictMode>
+  , container)
 }
 
 ;('undefined' != typeof wx && wx.getSystemInfoSync) || createApp()

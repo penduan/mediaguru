@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 
-interface IControlViewItem
+export interface IControlViewItem
 {
   /** 显示的名称 */
   name: string;
@@ -12,14 +12,13 @@ interface IControlViewItem
   content?: any;
 }
 
-interface PageContextValue {
-  btnList: IControlViewItem[][]
+export interface PageContextValue {
+  btnLists: IControlViewItem[][]
 }
 
 const defaultPageContext: PageContextValue = {
-  btnList: [
+  btnLists: [
   ]
 }
-
 
 export const PageControlContext = createContext(defaultPageContext);
