@@ -1,6 +1,7 @@
 
 import React from "react";
 
+import { Button } from "tdesign-react";
 import { AddIcon } from "tdesign-icons-react";
 
 import { ActionViewControl } from "./react/ActionViewControl";
@@ -40,8 +41,18 @@ export function MediaManager({ onAdd, onRun, onSave }: {
 {
   let mediaContext = React.useContext(MediaManagerContext);
   return (
-    <div className="media-manager__bg">
-      <AddIcon />
+    <div className="media-manager__bg" style={{
+      zIndex: 9999,
+      transition: "width, height 0.3s ease 0s",
+    }}>
+      <div style={{position: "fixed", display: "flex", width: "400px", left: "calc(50vw - 200px)",
+        bottom: "18px",
+        height: "64px",
+        borderRadius: "32px",
+        backgroundColor: "black"}}>
+        <div><AddIcon /></div>
+        <div><AddIcon /></div>
+      </div>
       <div className="footer weui-flex">
         <ActionViewControl name="添加媒体" actions={mediaSchemes} onAction={() => {}}></ActionViewControl>
         <ActionViewControl name="执行动作" actions={actionSchemes} onAction={() => {}}></ActionViewControl>
