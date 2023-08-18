@@ -2,7 +2,7 @@
 
 .media-manager__bg
 {
-   
+  background-color: rgba(0, 0, 0, 0.8); 
 }
 
 .media-manager__box
@@ -10,3 +10,11 @@
 }
 
 
+.btn
+{
+  line-height: 52px;
+  margin: 6px 8px;
+  min-width: 52px;
+  border-radius: 52px;
+  background-color: white;
+}

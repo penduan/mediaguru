@@ -64,6 +64,7 @@
     "rimraf": "^5.0.0",
     "style-loader": "^3.3.2",
     "stylehacks": "^6.0.0",
+    "tdesign-icons-react": "^0.3.2",
     "terser-webpack-plugin": "^5.3.7",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",

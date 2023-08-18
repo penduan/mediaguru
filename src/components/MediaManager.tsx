@@ -1,11 +1,13 @@
 
-import React from "react";
+import React, { useState } from "react";
 
-import { Button } from "tdesign-react";
+import { Button as TButton } from "tdesign-react";
 import { AddIcon } from "tdesign-icons-react";
 
 import { ActionViewControl } from "./react/ActionViewControl";
 import { MediaContextValue, MediaManagerContext } from "./configs/MediaControlContext";
+
+import "./MediaManager.css";
 
 const mediaSchemes: any[] = [
   {name: "测试", description: "Hello World"},
@@ -40,18 +42,21 @@ export function MediaManager({ onAdd, onRun, onSave }: {
 })
 {
   let mediaContext = React.useContext(MediaManagerContext);
+  const [show, setShow] = useState(false);
+  
+
   return (
-    <div className="media-manager__bg" style={{
-      zIndex: 9999,
-      transition: "width, height 0.3s ease 0s",
-    }}>
-      <div style={{position: "fixed", display: "flex", width: "400px", left: "calc(50vw - 200px)",
+    <>
+      <div className="media-manager__bg" style={{position: "fixed", display: "flex", left: "calc(50vw - 200px)",
         bottom: "18px",
         height: "64px",
         borderRadius: "32px",
-        backgroundColor: "black"}}>
-        <div><AddIcon /></div>
-        <div><AddIcon /></div>
+        transition: "width .3s ease 0"
+      }}>
+        <TButton className="btn" variant="text" onClick={() => setShow(!show)} style={{padding: "0 16px"}} icon={show ? (<AddIcon />) : undefined} shape="round">
+        {show ? "测试" : (<AddIcon />)}
+        </TButton>
+        <div className="btn"><AddIcon /></div>
       </div>
       <div className="footer weui-flex">
         <ActionViewControl name="添加媒体" actions={mediaSchemes} onAction={() => {}}></ActionViewControl>
@@ -59,6 +64,6 @@ export function MediaManager({ onAdd, onRun, onSave }: {
         <ActionViewControl name="执行模板" actions={templateSchemes} onAction={() => {}}></ActionViewControl>
         <ActionViewControl name="保存" actions={saveSchemes} onAction={() => {}}></ActionViewControl>
       </div>
-    </div>
+    </>
   );
 }

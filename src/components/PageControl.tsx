@@ -58,7 +58,6 @@ export function PageControl({
 {
 
   let controlContext = React.useContext(PageControlContext);
-  console.log("PageControl", controlContext);
   return (<>
     <div className="control__bg">
       <ControlView>
