@@ -123,7 +123,7 @@ function DemoIndex()
       <PageControlProvider context={{btnLists: [[{name: "用户中心", icon: "icon",}]]}}>
         <PageControl header="abc" footer="footer" />  
       </PageControlProvider>
-
+      <td-theme-generator drawerVisible={[true, 2]} showSetting={[true,"Hello"]} />
     </>
   )
 }

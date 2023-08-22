@@ -10,11 +10,12 @@ import { Popup as TPopup } from 'tdesign-react';
 export function DockPage({ btnNode, content }: {
   btnNode: React.ReactNode,
   content: React.ReactNode,
+  onClickBtn:  () =>  void
 })
 {
   let [show, setShow] = useState(false);
 
-  return (<TPopup content={content}>
+  return (<TPopup content={content} hideEmptyPopup={undefined} >
     <div>
       {btnNode}
     </div>

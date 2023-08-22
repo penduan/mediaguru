@@ -1,7 +1,7 @@
 
-import React, { useState } from "react";
+import React, { createRef, useState } from "react";
 
-import { Button as TButton } from "tdesign-react";
+import { Button as TButton, Popup as TPopup } from "tdesign-react";
 import { AddIcon } from "tdesign-icons-react";
 
 import { ActionViewControl } from "./react/ActionViewControl";
@@ -43,19 +43,22 @@ export function MediaManager({ onAdd, onRun, onSave }: {
 {
   let mediaContext = React.useContext(MediaManagerContext);
   const [show, setShow] = useState(false);
-  
+  const attachRef = createRef<any>();
 
   return (
     <>
       <div className="media-manager__bg" style={{position: "fixed", display: "flex", left: "calc(50vw - 200px)",
         bottom: "18px",
-        height: "64px",
         borderRadius: "32px",
-        transition: "width .3s ease 0"
+        transition: "width 0.3s ease"
       }}>
-        <TButton className="btn" variant="text" onClick={() => setShow(!show)} style={{padding: "0 16px"}} icon={show ? (<AddIcon />) : undefined} shape="round">
-        {show ? "测试" : (<AddIcon />)}
-        </TButton>
+        <div style={{position: "relative"}} ref={attachRef}></div>
+        <TPopup visible={show} attach={() => attachRef.current} content="Hello World">
+          <TButton className="btn" variant="text" onClick={() => setShow(!show)} style={{padding: "0 16px"}} icon={show ? (<AddIcon />) : undefined} shape="round">
+          {show ? "测试" : (<AddIcon />)}
+          </TButton>
+        </TPopup>
+        
         <div className="btn"><AddIcon /></div>
       </div>
       <div className="footer weui-flex">

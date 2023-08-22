@@ -1,15 +1,19 @@
-import { createContext } from "react";
+ import { createContext } from "react";
 
 export interface IContext 
 {
 
 }
 
+export interface DockProps
+{
+ // 
+}
+
 export interface IActionManager
 {
   name: string;
-  actions: IAction[];
-
+  dockProps: DockProps[];
 }
 
 export interface MediaContextValue
@@ -20,5 +24,7 @@ export interface MediaContextValue
 const defaultMediaContext: MediaContextValue = {
   actionManagerList: []
 }
+
+
 
 export const MediaManagerContext = createContext(defaultMediaContext);
