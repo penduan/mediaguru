@@ -1,8 +1,9 @@
 import React, { StrictMode, useCallback, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
-import { start } from 'repl';
 import { MediaContainer } from 'src/components/MediaContainer';
-import { MediaManager } from 'src/components/MediaManager';
+import { MediaManager, MediaManagerProvider } from 'src/components/MediaManager';
+import { AddIcon } from "tdesign-icons-react";
+
 import Counter from 'src/components/counter';
 
 import './index.css';
@@ -119,7 +120,9 @@ function DemoIndex()
         onDeletedMedia={onDeletedMedia}
         onEditedMedia={onEditedMedia}
       ></MediaContainer>
-      <MediaManager onAdd={onAddMedias} onRun={onRunActions} onSave={onSaveMedias}></MediaManager>
+      <MediaManagerProvider props={{tabBar: [{name: "测试", icon: <AddIcon />}, {name: "测试1", icon: <AddIcon />}]}}>
+        <MediaManager onAdd={onAddMedias} onRun={onRunActions} onSave={onSaveMedias}></MediaManager>
+      </MediaManagerProvider>
       <PageControlProvider context={{btnLists: [[{name: "用户中心", icon: "icon",}]]}}>
         <PageControl header="abc" footer="footer" />  
       </PageControlProvider>

@@ -1,5 +1,5 @@
 
-import React, { createRef, useState } from "react";
+import React, { createRef, useContext, useState } from "react";
 
 import { Button as TButton, Popup as TPopup } from "tdesign-react";
 import { AddIcon } from "tdesign-icons-react";
@@ -8,6 +8,7 @@ import { ActionViewControl } from "./react/ActionViewControl";
 import { MediaContextValue, MediaManagerContext } from "./configs/MediaControlContext";
 
 import "./MediaManager.css";
+import DockTabBar from "./react/DockTabBar";
 
 const mediaSchemes: any[] = [
   {name: "测试", description: "Hello World"},
@@ -43,30 +44,29 @@ export function MediaManager({ onAdd, onRun, onSave }: {
 {
   let mediaContext = React.useContext(MediaManagerContext);
   const [show, setShow] = useState(false);
-  const attachRef = createRef<any>();
+  const tabBar = useContext(MediaManagerContext).tabBar;
 
   return (
     <>
       <div className="media-manager__bg" style={{position: "fixed", display: "flex", left: "calc(50vw - 200px)",
         bottom: "18px",
         borderRadius: "32px",
-        transition: "width 0.3s ease"
       }}>
-        <div style={{position: "relative"}} ref={attachRef}></div>
-        <TPopup visible={show} attach={() => attachRef.current} content="Hello World">
+        <DockTabBar tabBar={tabBar}></DockTabBar>
+        {/* <TPopup visible={show} attach={() => attachRef.current} content="Hello World">
           <TButton className="btn" variant="text" onClick={() => setShow(!show)} style={{padding: "0 16px"}} icon={show ? (<AddIcon />) : undefined} shape="round">
           {show ? "测试" : (<AddIcon />)}
           </TButton>
-        </TPopup>
+        </TPopup> */}
         
-        <div className="btn"><AddIcon /></div>
+        {/* <div className="btn"><AddIcon /></div> */}
       </div>
-      <div className="footer weui-flex">
+      {/* <div className="footer weui-flex">
         <ActionViewControl name="添加媒体" actions={mediaSchemes} onAction={() => {}}></ActionViewControl>
         <ActionViewControl name="执行动作" actions={actionSchemes} onAction={() => {}}></ActionViewControl>
         <ActionViewControl name="执行模板" actions={templateSchemes} onAction={() => {}}></ActionViewControl>
         <ActionViewControl name="保存" actions={saveSchemes} onAction={() => {}}></ActionViewControl>
-      </div>
+      </div> */}
     </>
   );
 }

@@ -10,21 +10,19 @@ export interface DockProps
  // 
 }
 
-export interface IActionManager
+export interface ITabBarProps
 {
   name: string;
-  dockProps: DockProps[];
+  icon: React.ReactElement;
 }
 
 export interface MediaContextValue
 {
-  actionManagerList: IActionManager[];
+  tabBar: ITabBarProps[];
 }
 
 const defaultMediaContext: MediaContextValue = {
-  actionManagerList: []
+  tabBar: []
 }
-
-
 
 export const MediaManagerContext = createContext(defaultMediaContext);
