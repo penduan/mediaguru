@@ -1,4 +1,4 @@
- import { createContext } from "react";
+ import React, { createContext } from "react";
 
 export interface IContext 
 {
@@ -14,6 +14,8 @@ export interface ITabBarProps
 {
   name: string;
   icon: React.ReactElement;
+  context?: React.ReactElement;
+  action?: () => void;
 }
 
 export interface MediaContextValue

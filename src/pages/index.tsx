@@ -78,9 +78,9 @@ function MediaInfo()
   return (<></>);
 }
 
-function MediaInfoList()
+function DemoContext()
 {
-  return (<></>);
+  return (<><div style={{width: "100%", height: "240px", lineHeight: "240px"}}>Hello World</div></>);
 }
 
 function DemoIndex()
@@ -120,7 +120,7 @@ function DemoIndex()
         onDeletedMedia={onDeletedMedia}
         onEditedMedia={onEditedMedia}
       ></MediaContainer>
-      <MediaManagerProvider props={{tabBar: [{name: "测试", icon: <AddIcon />}, {name: "测试1", icon: <AddIcon />}]}}>
+      <MediaManagerProvider props={{tabBar: [{name: "测试", icon: <AddIcon />, context: <DemoContext />}, {name: "测试1", icon: <AddIcon />, action: () => {console.log("a");alert("Hello World")}}]}}>
         <MediaManager onAdd={onAddMedias} onRun={onRunActions} onSave={onSaveMedias}></MediaManager>
       </MediaManagerProvider>
       <PageControlProvider context={{btnLists: [[{name: "用户中心", icon: "icon",}]]}}>

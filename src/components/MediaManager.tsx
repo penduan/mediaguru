@@ -43,7 +43,6 @@ export function MediaManager({ onAdd, onRun, onSave }: {
 })
 {
   let mediaContext = React.useContext(MediaManagerContext);
-  const [show, setShow] = useState(false);
   const tabBar = useContext(MediaManagerContext).tabBar;
 
   return (
