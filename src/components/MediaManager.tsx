@@ -37,7 +37,9 @@ export function MediaManager({ onAdd, onRun, onSave }: {
 
   return (
     <>
-      <div className="media-manager__bg" style={{position: "fixed", display: "flex", left: "calc(50vw - 200px)",
+      <div className="media-manager__bg" style={{position: "fixed", display: "flex", left: "50vw",
+        transform: "translateX(-50%)",
+        backgroundColor: "#f2f2f2",
         bottom: "18px",
         borderRadius: "32px",
       }}>
