@@ -10,7 +10,6 @@ import './index.css';
 
 import "tdesign-theme-generator";
 import { PageControl, PageControlProvider } from 'src/components/PageControl';
-import { PageControlContext } from 'src/components/configs/PageControlContext';
 declare  global {
   namespace JSX {
     interface IntrinsicElements {
@@ -85,12 +84,6 @@ function DemoContext()
 
 function DemoIndex()
 {
-  let [displayMode, setDisplayMode] = useState(false);
-  let [isChoosing, setIsChoosing] = useState(false);
-  let [isShowYuantu, setIsShowYuantu] = useState(false);
-  let [actions, setActions] = useState([] as any[]);
-  let [actionMode, setActionsMode] = useState("");
-
   let mediasRef = useRef<Medias>([]);
 
   const onAddMedias = (medias: Medias) => {
@@ -132,9 +125,16 @@ function DemoIndex()
 }
 
 export default function createApp() {
-  const container = document.createElement('div')
-  container.id = 'app'
-  document.body.appendChild(container)
+  let container;
+  if (process.env.WECHAT)
+  {
+    container = document.createElement('div')
+    container.id = 'app'
+  } else {
+    container = document.getElementById('app')
+  }
+  
+  document.body.appendChild(container!)
 
   ReactDOM.render(
     <StrictMode>
@@ -143,4 +143,8 @@ export default function createApp() {
   , container)
 }
 
-;('undefined' != typeof wx && wx.getSystemInfoSync) || createApp()
+if (!process.env.WECHAT)
+{
+  createApp();
+}
+// ;('undefined' != typeof wx && wx.getSystemInfoSync) || createApp()

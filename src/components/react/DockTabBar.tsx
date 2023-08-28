@@ -7,6 +7,7 @@ import React, { createRef, useCallback, useMemo, useState } from 'react';
 
 import { Popup as TPopup, Button as TButton } from 'tdesign-react';
 import { ITabBarProps } from '../configs/MediaControlContext';
+import "./DockTabBar.css";
 
 export default function DockTabBar({tabBar}: {
   tabBar: ITabBarProps[],
@@ -18,7 +19,7 @@ export default function DockTabBar({tabBar}: {
 
   const tabBarBtns = tabBar.map((item, index) => 
     (
-      <TButton key={index} className="btn" onClick={
+      <TButton key={index} className="tab-bar_control-item" onClick={
         (e) => {
           if (index == showingIndex) setShowing(!showing);
           else setShowingIndex(index);
@@ -37,8 +38,10 @@ export default function DockTabBar({tabBar}: {
   
   return (<TPopup hideEmptyPopup={undefined} >
     <div style={{position: "relative"}} ref={attachRef}></div>
-    {showing && tabBar[showingIndex]?.context}
-    <div>
+    <div className="tab-bar_content">
+      {showing && tabBar[showingIndex]?.context}
+    </div>
+    <div className="tab-bar_control">
       {tabBarBtns}
     </div>
   </TPopup>);

@@ -1,0 +1,23 @@
+
+
+.tab-bar_content
+{
+  transition: height 0.3s ease;
+}
+
+.tab-bar_control
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 4px;
+}
+
+.tab-bar_control-item
+{
+  height: 48px;
+  min-width: 48px;
+  margin: 0 4px;
+}

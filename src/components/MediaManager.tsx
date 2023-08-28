@@ -10,16 +10,6 @@ import { MediaContextValue, MediaManagerContext } from "./configs/MediaControlCo
 import "./MediaManager.css";
 import DockTabBar from "./react/DockTabBar";
 
-const mediaSchemes: any[] = [
-  {name: "测试", description: "Hello World"},
-  {name: "测试", description: "Hello World"},
-  {name: "测试", description: "Hello World"},
-  {name: "测试", description: "Hello World"},
-];
-const actionSchemes: any[] = [];
-const templateSchemes: any[] = [];
-const saveSchemes: any[] = [];
-
 export function MediaManagerProvider({ props, children }: { 
   props: MediaContextValue,
   children: React.ReactNode,
@@ -51,14 +41,7 @@ export function MediaManager({ onAdd, onRun, onSave }: {
         bottom: "18px",
         borderRadius: "32px",
       }}>
-        <DockTabBar tabBar={tabBar}></DockTabBar>
-        {/* <TPopup visible={show} attach={() => attachRef.current} content="Hello World">
-          <TButton className="btn" variant="text" onClick={() => setShow(!show)} style={{padding: "0 16px"}} icon={show ? (<AddIcon />) : undefined} shape="round">
-          {show ? "测试" : (<AddIcon />)}
-          </TButton>
-        </TPopup> */}
-        
-        {/* <div className="btn"><AddIcon /></div> */}
+        <DockTabBar tabBar={tabBar}></DockTabBar>        
       </div>
       {/* <div className="footer weui-flex">
         <ActionViewControl name="添加媒体" actions={mediaSchemes} onAction={() => {}}></ActionViewControl>
